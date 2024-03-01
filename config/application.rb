@@ -40,11 +40,11 @@ module TestApp
     config.generators.system_tests = nil
 
     config.generators do |g| 
-      g.test_framework :rspec,  
-         fixtures: false,
+      g.test_framework :rspec,
+         fixtures: true, 
          view_specs: false,
          helper_specs:false,
-         routint_specs:false
+         routine_specs:false
      end
 
   end
