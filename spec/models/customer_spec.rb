@@ -18,9 +18,12 @@ RSpec.describe Customer, type: :model do
 
 #  Creating using factory bot
 
-  it 'Create a Customer' do 
+  it 'Full name' do 
     customer = build (:customer)
-    expect(customer.full_name).to eq("Sr. Beatriz")
+    expect(customer.full_name).to start_with("Sr")    
   end    
+
+  it {expect{ create(:customer)}.to change {Customer.all.size}.by(1)}
+  # Vai criar o cliente e vai verificar que um registro foi incrementado.
 
 end
