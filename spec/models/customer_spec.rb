@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
 
-# Creating using features
+#### Creating using features --------------------------
 #   fixtures :customers #ou fixtures :all
     
 #     # subject.name = "Vanderlei Pinto"
@@ -16,14 +16,19 @@ RSpec.describe Customer, type: :model do
 #     expect(customer.full_name).to eq("Sr. Vanderlei Pinto")
 #   end
 
-#  Creating using factory bot
+####  Creating using factory bot -------------------------
 
-  it 'Full name' do 
-    customer = build (:customer)
-    expect(customer.full_name).to start_with("Sr")    
-  end    
+  # it 'Full name' do 
+  #   customer = build (:customer)
+  #   expect(customer.full_name).to start_with("Sr")    
+  # end    
 
-  it {expect{ create(:customer)}.to change {Customer.all.size}.by(1)}
-  # Vai criar o cliente e vai verificar que um registro foi incrementado.
+  # it {expect{ create(:customer)}.to change {Customer.all.size}.by(1)}
+  # # Vai criar o cliente e vai verificar que um registro foi incrementado.
 
+  it 'full_name_ Sobrescrevendo atributo' do
+    customer = build(:worker, name: "Vanderlei Pinto") ##ou :customer, :worker ou :user
+    expect(customer.full_name).to eq("Sr. Vanderlei Pinto")
+  end
+    
 end
