@@ -39,14 +39,20 @@ RSpec.describe Customer, type: :model do
   #   expect(customer.vip).to eq(true)
   #  end
 
-  it 'Usando o Attributes_for' do
-    attrs = attributes_for(:customer)
-    attrs1 = attributes_for(:customer_vip)
-    attrs2 = attributes_for(:customer_default)
-    p attrs
-    p attrs1
-    p attrs2
-    customer = Customer.build(attrs)
-    expect(customer.full_name).to start_with("Sr.")
+  # it 'Usando o Attributes_for' do
+  #   attrs = attributes_for(:customer)
+  #   attrs1 = attributes_for(:customer_vip)
+  #   attrs2 = attributes_for(:customer_default)
+  #   p attrs
+  #   p attrs1
+  #   p attrs2
+  #   customer = Customer.build(attrs)
+  #   expect(customer.full_name).to start_with("Sr.")
+  # end
+  it 'Usando o Attributos Transitórios' do
+    
+    customer = create(:customer, upcased: true)
+    
+    expect(customer.name).to eq(customer.name.upcase)
   end
 end
