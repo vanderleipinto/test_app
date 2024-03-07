@@ -17,7 +17,7 @@ RSpec.describe Customer, type: :model do
   #   expect(customer.full_name).to eq("Sr. Vanderlei Pinto")
   # end
 
-####  Creating using factory bot -------------------------
+####  Creating using factory bot -----------------------
 
   # it 'Full name' do 
   #   customer = build (:customer)
@@ -49,10 +49,24 @@ RSpec.describe Customer, type: :model do
   #   customer = Customer.build(attrs)
   #   expect(customer.full_name).to start_with("Sr.")
   # end
-  it 'Usando o Attributos Transitórios' do
+  # it 'Usando o Attributos Transitórios' do
     
-    customer = create(:customer, upcased: true)
+  #   customer = create(:customer, upcased: true)
     
-    expect(customer.name).to eq(customer.name.upcase)
+  #   expect(customer.name).to eq(customer.name.upcase)
+  # end
+
+  it 'Cliente masculino vip' do
+    customer = create(:customer_male_vip)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to eq(true)
   end
+
+  it 'Cliente Feminino default' do
+    customer = create(:customer_female_default)
+    expect(customer.gender).to eq('F')
+    expect(customer.vip).to eq(false)
+  end
+
+  
 end
