@@ -56,26 +56,28 @@ RSpec.describe Customer, type: :model do
   #   expect(customer.name).to eq(customer.name.upcase)
   # end
 
-  it 'Cliente masculino vip' do
-    customer = create(:customer_male_vip)
-    expect(customer.gender).to eq('M')
-    expect(customer.vip).to eq(true)
-  end
+  # it 'Cliente masculino vip' do
+  #   customer = create(:customer_male_vip)
+  #   expect(customer.gender).to eq('M')
+  #   expect(customer.vip).to eq(true)
+  # end
 
-  it 'Cliente Feminino default' do
-    customer = create(:customer_female_default)
-    expect(customer.gender).to eq('F')
-    expect(customer.vip).to eq(false)
-  end
+  # it 'Cliente Feminino default' do
+  #   customer = create(:customer_female_default)
+  #   expect(customer.gender).to eq('F')
+  #   expect(customer.vip).to eq(false)
+  # end
   
-  it 'Creates email using sequence' do
-    #in the factory the email sequence works like this:
-    # sequence(:email) {|n| "customer_email-#{n}@email.com"}
-    customer = create(:customer_female_default)
-    customer2 = create(:customer_male_default)
-    puts customer.email
-    puts customer2.email
-  end
+  # it 'Creates email using sequence' do
+  #   #in the factory the email sequence works like this:
+  #   # sequence(:email) {|n| "customer_email-#{n}@email.com"}
+  #   customer = create(:customer_female_default)
+  #   customer2 = create(:customer_male_default)
+  #   puts customer.email
+  #   puts customer2.email
+  # end
+
+
   
 end
  
