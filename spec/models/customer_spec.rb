@@ -67,6 +67,15 @@ RSpec.describe Customer, type: :model do
     expect(customer.gender).to eq('F')
     expect(customer.vip).to eq(false)
   end
-
+  
+  it 'Creates email using sequence' do
+    #in the factory the email sequence works like this:
+    # sequence(:email) {|n| "customer_email-#{n}@email.com"}
+    customer = create(:customer_female_default)
+    customer2 = create(:customer_male_default)
+    puts customer.email
+    puts customer2.email
+  end
   
 end
+ 
