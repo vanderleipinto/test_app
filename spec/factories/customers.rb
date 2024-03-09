@@ -3,6 +3,7 @@ FactoryBot.define do
     
     transient do
       upcased  {false} #valor que pode ser mudado na criação do objeto - customer = create(:customer, upcased: true)
+      qtt_orders {3}
     end
 
     name {Faker::Name.name}
@@ -28,6 +29,14 @@ FactoryBot.define do
       days_to_pay {15}
     end
 
+    trait :with_orders do
+      after(:create) do |customer, evaluator|  #executa essa ação após criar o objeto.
+        create_list(:order, evaluator.qtt_orders, customer: customer)
+      end 
+    end
+
+    
+    factory :customer_with_orders, traits: [:with_orders]
     factory :customer_male, traits: [:male]
     factory :customer_female, traits: [:female]
     factory :customer_vip, traits: [:vip]
@@ -40,7 +49,6 @@ FactoryBot.define do
 
     after(:create) do |customer, evaluator|  #executa essa ação após criar o objeto.
       customer.name.upcase! if evaluator.upcased #transforma em maiusculo se upcased == true
-    end 
-
+    end  
   end
 end
