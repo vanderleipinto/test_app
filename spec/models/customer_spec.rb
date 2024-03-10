@@ -39,43 +39,46 @@ RSpec.describe Customer, type: :model do
   #   expect(customer.vip).to eq(true)
   #  end
 
-  # it 'Usando o Attributes_for' do
-  #   attrs = attributes_for(:customer)
-  #   attrs1 = attributes_for(:customer_vip)
-  #   attrs2 = attributes_for(:customer_default)
-  #   p attrs
-  #   p attrs1
-  #   p attrs2
-  #   customer = Customer.build(attrs)
-  #   expect(customer.full_name).to start_with("Sr.")
-  # end
-  # it 'Usando o Attributos Transitórios' do
-    
-  #   customer = create(:customer, upcased: true)
-    
-  #   expect(customer.name).to eq(customer.name.upcase)
-  # end
+  it 'Usando o Attributes_for' do
+    attrs = attributes_for(:customer)
+    attrs1 = attributes_for(:customer_vip)
+    attrs2 = attributes_for(:customer_default)
+    p attrs
+    p attrs1
+    p attrs2
+    customer = Customer.build(attrs)
+    p "Attributes for -> #{customer.inspect}"
+    expect(customer.full_name).to start_with("Sr.")
+  end
 
-  # it 'Cliente masculino vip' do
-  #   customer = create(:customer_male_vip)
-  #   expect(customer.gender).to eq('M')
-  #   expect(customer.vip).to eq(true)
-  # end
 
-  # it 'Cliente Feminino default' do
-  #   customer = create(:customer_female_default)
-  #   expect(customer.gender).to eq('F')
-  #   expect(customer.vip).to eq(false)
-  # end
+  it 'Usando o Attributos Transitórios' do
+    
+    customer = create(:customer, upcased: true)
+    
+    expect(customer.name).to eq(customer.name.upcase)
+  end
+
+  it 'Cliente masculino vip' do
+    customer = create(:customer_male_vip)
+    expect(customer.gender).to eq('M')
+    expect(customer.vip).to eq(true)
+  end
+
+  it 'Cliente Feminino default' do
+    customer = create(:customer_female_default)
+    expect(customer.gender).to eq('F')
+    expect(customer.vip).to eq(false)
+  end
   
-  # it 'Creates email using sequence' do
-  #   #in the factory the email sequence works like this:
-  #   # sequence(:email) {|n| "customer_email-#{n}@email.com"}
-  #   customer = create(:customer_female_default)
-  #   customer2 = create(:customer_male_default)
-  #   puts customer.email
-  #   puts customer2.email
-  # end
+  it 'Creates email using sequence' do
+    #in the factory the email sequence works like this:
+    # sequence(:email) {|n| "customer_email-#{n}@email.com"}
+    customer = create(:customer_female_default)
+    customer2 = create(:customer_male_default)
+    puts customer.email
+    puts customer2.email
+  end
 
 
   

@@ -18,12 +18,27 @@ RSpec.describe Order, type: :model do
     expect(orders.count).to eq(3)
   end
 
+  it 'tem 2 pedidos (create_pair)' do
+    orders = create_pair(:order, description: "Testeee de pair")    
+    expect(orders.count).to eq(2)
+  end
+
   it 'has_many' do
     customer = create(:customer, :with_orders, qtt_orders: 10) #sobrescreve as orders
     customer2 = create(:customer_with_orders) #já cria com as 3 ordens padrão
-    puts customer.inspect
-    puts customer.orders.inspect
+    puts customer.inspect 
+    #puts customer.orders.inspect
     expect(customer.orders.count).to eq(10)
   end
+
+  it 'build_stubbed' do
+    customer = build_stubbed(:customer, :with_orders, qtt_orders: 10) #sobrescreve as orders
+    customer2 = create(:customer_with_orders) #já cria com as 3 ordens padrão
+    puts customer.inspect 
+    #puts customer.orders.inspect
+    expect(true).to eq(true)
+  end
+
+  
 
 end 
